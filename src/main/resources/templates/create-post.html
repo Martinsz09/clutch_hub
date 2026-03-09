@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Transmission | ClutchHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/create.css}">
+</head>
+<body>
+
+    <header class="header">
+        <a href="/" class="logo">
+            <i class="ph ph-target"></i> CLUTCH<span>HUB</span>
+        </a>
+        <nav class="menu">
+            <ul>
+                <li><a href="/"><i class="ph ph-house"></i> Back to Feed</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-small">
+        <main class="create-container">
+            <header class="create-header">
+                <i class="ph ph-note-pencil"></i>
+                <h1>Create <span>Post</span></h1>
+                <p>Share your builds, clips or questions with the squad.</p>
+            </header>
+
+            <form th:action="@{/post/create}" method="post" class="create-form">
+                
+                <div class="input-section">
+                    <label>Title</label>
+                    <input type="text" name="title" placeholder="An interesting title..." required maxlength="100">
+                </div>
+
+                <div class="form-row">
+                    <div class="input-section">
+                        <label>Category</label>
+                        <select name="category" required>
+                            <option value="" disabled selected>Select a tag</option>
+                            <option value="GUIDE">Guide</option>
+                            <option value="BUILD">Build</option>
+                            <option value="QUESTION">Question</option>
+                            <option value="CLIP">Clip</option>
+                            <option value="NEWS">News</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <label>Content</label>
+                    <textarea name="content" rows="10" placeholder="Write your transmission here... (Markdown supported)" required></textarea>
+                </div>
+
+                <div class="create-actions">
+                    <a href="/" class="btn-cancel">Discard</a>
+                    <button type="submit" class="btn-nexus">
+                        Post Transmission <i class="ph ph-paper-plane-tilt"></i>
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ClutchHub Nexus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body class="nexus-theme">
+
+    <div class="split-screen">
+        <div class="left-panel login-variant">
+            <div class="brand-overlay">
+                <div class="logo-main">
+                    <i class="ph ph-target"></i>
+                    <span>CLUTCH<span>HUB</span></span>
+                </div>
+                <div class="brand-content">
+                    <h1>Welcome back, <br>Commander.</h1>
+                    <p>Your squad is waiting. <br>Check your latest builds and boss alerts.</p>
+                </div>
+            </div>
+            <div class="gradient-sphere login-glow"></div>
+        </div>
+
+        <div class="right-panel">
+            <div class="form-box">
+                <header class="form-header">
+                    <h2>Login</h2>
+                    <p>New to the Nexus? <a th:href="@{/auth/register}">Join now</a></p>
+                </header>
+
+                <form th:action="@{/auth/login}" method="post" class="clean-form">
+                    
+                    <div th:if="${param.error}" class="error-msg">
+                        <i class="ph ph-warning-circle"></i> Invalid credentials.
+                    </div>
+
+                    <div class="field">
+                        <label>Username / Email</label>
+                        <input type="text" name="username" placeholder="Enter your gamertag" required autofocus>
+                    </div>
+
+                    <div class="field">
+                        <div class="label-row">
+                            <label>Password</label>
+                           
+                        </div>
+                        <input type="password" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="terms">
+                        <input type="checkbox" id="remember" name="remember-me">
+                        <label for="remember">Stay synced on this device</label>
+                    </div>
+
+                    <button type="submit" class="btn-nexus">
+                        Deploy <i class="ph ph-rocket-launch"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

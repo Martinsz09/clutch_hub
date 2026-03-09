@@ -1,0 +1,273 @@
+:root {
+    --bg-dark: #05070a;
+    --panel-dark: #0f1217;
+    --neon-green: #00ff66;
+    --text-main: #ffffff;
+    --text-dim: #8899a6;
+    --border-color: #1d2127;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body.nexus-theme {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.split-screen {
+    display: flex;
+    height: 100vh;
+}
+
+/* PAINEL ESQUERDO (VISUAL) */
+.left-panel {
+    flex: 1.2;
+    background: #080a0d;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    overflow: hidden;
+}
+
+/* Esconde o painel visual em celulares para focar no registro */
+@media (max-width: 900px) { 
+    .left-panel { display: none; } 
+}
+
+.brand-overlay { 
+    position: relative; 
+    z-index: 2; 
+}
+
+.logo-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 80px;
+}
+
+.logo-main i { 
+    color: var(--neon-green); 
+    font-size: 40px; 
+}
+
+.logo-main span span { 
+    color: var(--neon-green); 
+}
+
+.brand-content h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #ffffff, #555555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-content p { 
+    color: var(--text-dim); 
+    font-size: 18px; 
+    line-height: 1.6; 
+}
+
+.gradient-sphere {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 255, 102, 0.12) 0%, transparent 70%);
+    top: -150px;
+    left: -150px;
+}
+
+/* PAINEL DIREITO (FORMULÁRIO) */
+.right-panel {
+    flex: 1;
+    background: var(--panel-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-left: 1px solid var(--border-color);
+}
+
+.form-box { 
+    width: 100%; 
+    max-width: 400px; 
+}
+
+.form-header h2 { 
+    font-size: 32px; 
+    font-weight: 800; 
+    margin-bottom: 8px; 
+    letter-spacing: -1px;
+}
+
+.form-header p { 
+    color: var(--text-dim); 
+    margin-bottom: 40px; 
+}
+
+.form-header a { 
+    color: var(--neon-green); 
+    text-decoration: none; 
+    font-weight: 600; 
+}
+
+.form-header a:hover {
+    text-decoration: underline;
+}
+
+/* CAMPOS DE ENTRADA */
+.clean-form .field { 
+    margin-bottom: 24px; 
+}
+
+.clean-form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.clean-form input[type="text"],
+.clean-form input[type="email"],
+.clean-form input[type="password"] {
+    width: 100%;
+    background: #080a0d;
+    border: 1px solid var(--border-color);
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.clean-form input:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    background: #0c0f14;
+    box-shadow: 0 0 0 4px rgba(0, 255, 102, 0.08);
+}
+
+.input-hint { 
+    font-size: 11px; 
+    color: var(--text-dim); 
+    display: block; 
+    margin-top: 8px; 
+    opacity: 0.7;
+}
+
+/* CHECKBOX E TERMOS */
+.terms { 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 12px; 
+    margin-bottom: 35px; 
+}
+
+.terms input[type="checkbox"] {
+    margin-top: 4px;
+    accent-color: var(--neon-green);
+}
+
+.terms label { 
+    font-size: 13px; 
+    color: var(--text-dim); 
+    cursor: pointer; 
+    line-height: 1.4;
+}
+
+.terms span { 
+    color: var(--neon-green); 
+    font-weight: 600; 
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-nexus {
+    width: 100%;
+    background: var(--neon-green);
+    color: #000;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-nexus:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 255, 102, 0.4);
+    filter: brightness(1.1);
+}
+
+.btn-nexus i {
+    font-size: 20px;
+}
+
+/* --- Estilos específicos para a variante de Login --- */
+
+.left-panel.login-variant {
+    background: #0a0d12; /* Um tom levemente diferente para diferenciar do registro */
+}
+
+.login-glow {
+    background: radial-gradient(circle, rgba(0, 255, 102, 0.08) 0%, transparent 60%);
+    bottom: -100px;
+    right: -100px;
+    left: auto; /* Move o brilho para o outro lado */
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-link {
+    font-size: 11px;
+    color: var(--neon-green);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.forgot-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.error-msg {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid rgba(255, 68, 68, 0.3);
+    color: #ff4444;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Pass | ClutchHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body class="nexus-theme">
+
+    <div class="split-screen">
+        <div class="left-panel">
+            <div class="brand-overlay">
+                <div class="logo-main">
+                    <i class="ph ph-shield-checkered"></i>
+                    <span>CLUTCH<span>HUB</span></span>
+                </div>
+                <div class="brand-content">
+                    <h1>The high-ground <br>is yours.</h1>
+                   <p>Be among the first gamers building the ClutchHub community — share builds, clips and boss strategies.</p>
+                </div>
+            </div>
+            <div class="gradient-sphere"></div>
+        </div>
+
+        <div class="right-panel">
+            <div class="form-box">
+                <header class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Already a member? <a th:href="@{/auth/login}">Log in</a></p>
+                </header>
+
+<form th:action="@{/auth/register}" method="post" class="clean-form">                    <div class="field">
+                        <label>Gamertag</label>
+                        <input type="text" name="username" placeholder="e.g. MasterChief_117" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="name@domain.com" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="At least 8 characters" required>
+                        <span class="input-hint">Use numbers and symbols for better defense.</span>
+                    </div>
+
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <span>Rules of Engagement</span>.</label>
+                    </div>
+
+                    <button type="submit" class="btn-nexus">
+                        Start Journey <i class="ph ph-arrow-right"></i>
+                    </button>
+                </form>
+                
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>

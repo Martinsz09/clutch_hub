@@ -1,0 +1,314 @@
+/* 1. VARIÁVEIS E RESET */
+:root {
+    --bg: #0b0e11;
+    --card: #151a21;
+    --header: #1a2129;
+    --neon: #00ff66; /* Verde Gamer Vibrante */
+    --text: #e4e6eb;
+    --text-muted: #b0b3b8;
+    --border: #2f353d;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. HEADER (GLASSMORPHISM) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 70px;
+    background: rgba(26, 33, 41, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logo span { color: var(--neon); }
+.logo i { color: var(--neon); font-size: 28px; }
+
+/* 3. BUSCA E NAVEGAÇÃO */
+.search-bar {
+    background: #242c37;
+    flex: 0.4;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.search-bar:focus-within {
+    border-color: var(--neon);
+    background: #2a3442;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    width: 100%;
+    outline: none;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.menu a:hover, .menu a.active { color: var(--neon); }
+
+/* 4. BOTÕES DE AUTENTICAÇÃO E AÇÃO */
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.btn-login {
+    color: var(--text-muted) !important;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-signup {
+    border: 1px solid var(--neon);
+    color: var(--neon) !important;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.btn-signup:hover {
+    background: var(--neon);
+    color: #000 !important;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-create {
+    background: var(--neon);
+    color: #000 !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.btn-create:hover { 
+    filter: brightness(1.2); 
+    transform: translateY(-2px); 
+}
+
+/* 5. LAYOUT PRINCIPAL */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* 6. CARDS DE POSTS */
+.post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.post-card:hover { border-color: #4f5660; }
+
+.vote-sidebar {
+    background: rgba(0,0,0,0.15);
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    gap: 8px;
+}
+
+.vote-sidebar i { 
+    font-size: 20px; 
+    cursor: pointer; 
+    color: var(--text-muted); 
+    transition: 0.2s;
+}
+
+.vote-sidebar i:hover { color: var(--neon); }
+
+.post-content { padding: 20px; flex: 1; }
+
+.post-meta { 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    margin-bottom: 10px; 
+}
+
+.tag {
+    background: #343a42;
+    color: var(--neon);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.post-card h3 { 
+    font-size: 22px; 
+    margin-bottom: 10px; 
+    color: #fff;
+}
+
+.post-card p { 
+    color: var(--text-muted); 
+    font-size: 15px; 
+    margin-bottom: 15px;
+}
+
+.post-footer {
+    display: flex;
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+}
+
+.post-footer button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.post-footer button:hover { 
+    background: rgba(255,255,255,0.05); 
+    color: var(--text);
+}
+
+/* 7. SIDEBAR */
+.sidebar-box {
+    background: var(--card);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: sticky;
+    top: 94px;
+}
+
+.banner {
+    height: 70px;
+    background: linear-gradient(45deg, var(--neon), #0099ff);
+}
+
+.sidebar-box h3 { 
+    padding: 15px; 
+    font-size: 16px; 
+    border-bottom: 1px solid var(--border);
+}
+
+.game-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+}
+
+.game-item:last-child { border-bottom: none; }
+
+.game-item span { font-weight: 800; color: var(--text-muted); width: 20px; }
+.game-item p { flex: 1; font-weight: 600; font-size: 14px; }
+
+.game-item button {
+    background: var(--neon);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.game-item button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+/* 8. RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+    .search-bar {
+        display: none;
+    }
+}
