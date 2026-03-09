@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" 
+<html lang="en" 
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
 <head>
@@ -17,7 +17,7 @@
 <body>
 
     <header class="header">
-        <a href="/" class="logo">
+        <a th:href="@{/}" class="logo">
             <i class="ph ph-target"></i> CLUTCH<span>HUB</span>
         </a>
 
@@ -28,12 +28,14 @@
 
         <nav class="menu">
             <ul>
-                <li><a href="/" class="active"><i class="ph ph-house"></i> Home</a></li>
-                <li><a href="/posts"><i class="ph ph-fire"></i> Trending</a></li>
+                <li><a th:href="@{/}" class="active"><i class="ph ph-house"></i> Home</a></li>
+                <li><a th:href="@{/posts/trending}"><i class="ph ph-fire"></i> Trending</a></li>
                 
                 <div class="nav-auth">
-                    
-                
+                    <th:block sec:authorize="!isAuthenticated()">
+                        <li><a th:href="@{/login}" class="btn-login">Login</a></li>
+                        <li><a th:href="@{/register}" class="btn-signup">Sign Up</a></li>
+                    </th:block>
 
                     <th:block sec:authorize="isAuthenticated()">
                         <li><a th:href="@{/post/create}" class="btn-create"><i class="ph ph-plus-circle"></i> Create</a></li>
@@ -45,13 +47,12 @@
                         </li>
                         <li>
                             <form th:action="@{/logout}" method="post" style="display: inline;">
-                                <button type="submit" class="btn-login" style="background:none; border:none; cursor:pointer; font-family: inherit;">
-                                    <i class="ph ph-sign-out"></i>
+                                <button type="submit" class="btn-login" style="background:none; border:none; cursor:pointer; font-family: inherit; display: flex; align-items: center;">
+                                    <i class="ph ph-sign-out" style="font-size: 20px;"></i>
                                 </button>
                             </form>
                         </li>
                     </th:block>
-
                 </div>
             </ul>
         </nav>
@@ -60,45 +61,37 @@
     <div class="container">
         
         <main class="feed">
-            
-            <article class="post-card">
+            <article class="post-card" th:each="post : ${posts}">
                 <div class="vote-sidebar">
                     <i class="ph ph-caret-up"></i>
-                    <span>1.2k</span>
+                    <span th:text="${post.votes != null ? post.votes : 0}">0</span>
                     <i class="ph ph-caret-down"></i>
                 </div>
+
                 <div class="post-content">
                     <div class="post-meta">
-                        Posted by <u>u/LeonS</u> • <span class="tag">Guide</span>
-                    </div>
-                    <h3>How to defeat the boss in Resident Evil 4?</h3>
-                    <p>I'm stuck in the castle boss fight. Any tips for the Salazar fight? He keeps dodging my sniper shots.</p>
+                        Posted by 
+                    <u th:text="${post.author != null ? 'u/' + post.author.username : 'Anonymous'}">u/Author</u> 
+    • 
+                    <span class="tag" th:text="${post.category}">Category</span>
+                </div>
+
+                    <h3 th:text="${post.title}">Post Title</h3>
+                    
+                    <p th:text="${post.content}">Post content goes here...</p>
+
                     <div class="post-footer">
-                        <button><i class="ph ph-chat-centered-text"></i> 84 Comments</button>
+                        <button><i class="ph ph-chat-centered-text"></i> <span>0 Comments</span></button>
                         <button><i class="ph ph-share-network"></i> Share</button>
                     </div>
                 </div>
             </article>
 
-            <article class="post-card">
-                <div class="vote-sidebar">
-                    <i class="ph ph-caret-up"></i>
-                    <span>850</span>
-                    <i class="ph ph-caret-down"></i>
-                </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        Posted by <u>u/Tarnished</u> • <span class="tag">Build</span>
-                    </div>
-                    <h3>Elden Ring build help</h3>
-                    <p>What is the best strength build for early game? Is the Guts Greatsword still meta for Shadow of the Erdtree?</p>
-                    <div class="post-footer">
-                        <button><i class="ph ph-chat-centered-text"></i> 120 Comments</button>
-                        <button><i class="ph ph-share-network"></i> Share</button>
-                    </div>
-                </div>
-            </article>
-
+            <div th:if="${#lists.isEmpty(posts)}" style="text-align: center; padding: 60px; color: var(--text-muted); grid-column: 1 / -1;">
+                <i class="ph ph-ghost" style="font-size: 64px; opacity: 0.3;"></i>
+                <p style="margin-top: 15px; font-size: 18px;">No transmissions found in this sector.</p>
+                <a th:href="@{/post/create}" style="color: var(--neon); text-decoration: none; font-weight: bold;">Broadcast the first one?</a>
+            </div>
         </main>
 
         <aside class="sidebar">

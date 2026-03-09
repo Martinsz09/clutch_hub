@@ -1,7 +1,17 @@
 package br.com.cluthhub.cluthhub.domain.dto;
 
-import java.util.Locale.Category;
 
+
+import br.com.cluthhub.cluthhub.domain.enums.Category;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 
 
 public class PostDto {
@@ -11,4 +21,6 @@ public class PostDto {
     private Category category;
 
     private String content;
+
+    private Integer votes;
 }
