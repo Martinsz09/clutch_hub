@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clutch Comments</title>
+    <link rel="stylesheet" th:href="@{/css/comments.css}">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="nexus-theme">
+
+<section class="nx-comments-section">
+    <nav class="nx-navigation">
+        <a th:href="@{/}" class="nx-btn-back">
+            <i class="ph ph-caret-left"></i>
+            Voltar para todos os posts
+        </a>
+    </nav>
+
+    <header class="nx-comments-header">
+        <h3 class="nx-title">Discussão <span class="nx-count">24</span></h3>
+    </header>
+
+    <!-- Área de Input -->
+    <div class="nx-compose-box">
+        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=You" alt="Seu Avatar" class="nx-avatar">
+        <div class="nx-compose-inner">
+            <textarea placeholder="Adicione um comentário..." rows="1" class="nx-textarea"></textarea>
+            <div class="nx-compose-actions">
+                <button class="nx-btn-primary">Comentar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feed de Comentários -->
+    <div class="nx-thread">
+        <article class="nx-comment">
+            <div class="nx-comment-sidebar">
+                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Fallen" alt="Avatar" class="nx-avatar">
+                <div class="nx-thread-line"></div>
+            </div>
+            <div class="nx-comment-content">
+                <div class="nx-comment-meta">
+                    <span class="nx-author">GamerMaster</span>
+                    <span class="nx-timestamp">há 2 horas</span>
+                </div>
+                <div class="nx-comment-text">
+                    <p>Excelente clutch! Esse reflexo de 180ms prova que o treino tá em dia.</p>
+                </div>
+                <div class="nx-comment-footer">
+                    <div class="nx-votes">
+                        <button class="nx-vote-btn"><i class="ph ph-arrow-up"></i></button>
+                        <span class="nx-score">154</span>
+                        <button class="nx-vote-btn"><i class="ph ph-arrow-down"></i></button>
+                    </div>
+                    <button class="nx-action-btn"><i class="ph ph-chat-circle"></i> Responder</button>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+</body>
+</html>

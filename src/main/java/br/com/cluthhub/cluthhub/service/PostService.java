@@ -27,7 +27,6 @@ public class PostService {
         post.setTitle(dto.getTitle());
         post.setContent(dto.getContent());
         post.setCategory(dto.getCategory());
-        post.setVotes(dto.getVotes() != null ? dto.getVotes() : 0);
         
         post.setAuthor(user); 
         

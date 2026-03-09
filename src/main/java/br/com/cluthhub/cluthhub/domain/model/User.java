@@ -1,6 +1,7 @@
 package br.com.cluthhub.cluthhub.domain.model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -40,5 +41,12 @@ public class User {
 
     @OneToMany(mappedBy = "author")
     private List<Post> posts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    
+    private List<Vote> voteList;
+    
+    @Column(name = "total_votes")
+    private Integer votes = 0;
 
 }

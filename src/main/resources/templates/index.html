@@ -9,10 +9,13 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
-    
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    
+    <style>
+        .vote-btn { background: none; border: none; cursor: pointer; color: inherit; padding: 0; display: flex; align-items: center; justify-content: center; }
+        .vote-btn:hover { color: var(--neon); }
+    </style>
 </head>
 <body>
 
@@ -59,29 +62,35 @@
     </header>
 
     <div class="container">
-        
         <main class="feed">
-            <article class="post-card" th:each="post : ${posts}">
+            <article class="post-card" th:each="post : ${posts}" th:id="'post-' + ${post.id}">
                 <div class="vote-sidebar">
-                    <i class="ph ph-caret-up"></i>
-                    <span th:text="${post.votes != null ? post.votes : 0}">0</span>
-                    <i class="ph ph-caret-down"></i>
+                    <form th:action="@{'/votes/' + ${post.id}}" method="post">
+                        <input type="hidden" name="value" value="1">
+                        <button type="submit" class="vote-btn"><i class="ph ph-caret-up"></i></button>
+                    </form>
+
+                    <span th:text="${post.totalVotes != null ? post.totalVotes : 0}">0</span>
+
+                    <form th:action="@{'/votes/' + ${post.id}}" method="post">
+                        <input type="hidden" name="value" value="-1">
+                        <button type="submit" class="vote-btn"><i class="ph ph-caret-down"></i></button>
+                    </form>
                 </div>
 
                 <div class="post-content">
                     <div class="post-meta">
                         Posted by 
-                    <u th:text="${post.author != null ? 'u/' + post.author.username : 'Anonymous'}">u/Author</u> 
-    • 
-                    <span class="tag" th:text="${post.category}">Category</span>
-                </div>
+                        <u th:text="${post.author != null ? 'u/' + post.author.username : 'Anonymous'}">u/Author</u> 
+                        • 
+                        <span class="tag" th:text="${post.category}">Category</span>
+                    </div>
 
                     <h3 th:text="${post.title}">Post Title</h3>
-                    
                     <p th:text="${post.content}">Post content goes here...</p>
 
                     <div class="post-footer">
-                        <button><i class="ph ph-chat-centered-text"></i> <span>0 Comments</span></button>
+                        <button><i class="ph ph-chat-centered-text"></i> <span><a th:href="@{/comments}">0 Comments</a></span></button>
                         <button><i class="ph ph-share-network"></i> Share</button>
                     </div>
                 </div>
@@ -98,22 +107,12 @@
             <div class="sidebar-box community-card">
                 <div class="banner"></div>
                 <h3>Top Communities</h3>
-                
-                <div class="game-item">
-                    <span>1</span> <p>Resident Evil</p> <button>Join</button>
-                </div>
-                <div class="game-item">
-                    <span>2</span> <p>Elden Ring</p> <button>Join</button>
-                </div>
-                <div class="game-item">
-                    <span>3</span> <p>Dark Souls</p> <button>Join</button>
-                </div>
-                <div class="game-item">
-                    <span>4</span> <p>GTA V</p> <button>Join</button>
-                </div>
+                <div class="game-item"><span>1</span> <p>Resident Evil</p> <button>Join</button></div>
+                <div class="game-item"><span>2</span> <p>Elden Ring</p> <button>Join</button></div>
+                <div class="game-item"><span>3</span> <p>Dark Souls</p> <button>Join</button></div>
+                <div class="game-item"><span>4</span> <p>GTA V</p> <button>Join</button></div>
             </div>
         </aside>
-
     </div>
 
 </body>

@@ -1,0 +1,171 @@
+:root {
+    --nx-bg-base: #09090B;
+    --nx-bg-surface: #131316;
+    --nx-bg-elevated: #1C1C21;
+    --nx-text-main: #E4E4E7;
+    --nx-text-muted: #71717A;
+    --nx-border-subtle: rgba(255, 255, 255, 0.06);
+    --nx-border-focus: rgba(255, 255, 255, 0.15);
+    --nx-accent: #00E59B;
+    --nx-accent-hover: #00C786;
+}
+
+/* Garante que o body não oculte o conteúdo */
+body.nexus-theme {
+    background-color: var(--nx-bg-base) !important;
+    color: var(--nx-text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.nx-comments-section {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--nx-bg-surface);
+    border-radius: 12px;
+    padding: 32px;
+    display: block; /* Garante renderização */
+}
+
+/* Estilização do Botão de Voltar */
+.nx-navigation {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.nx-btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--nx-text-muted) !important; /* Força a cor */
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.nx-btn-back:hover {
+    color: var(--nx-accent) !important;
+}
+
+.nx-btn-back i {
+    font-size: 16px;
+}
+
+/* Header */
+.nx-comments-header {
+    border-bottom: 1px solid var(--nx-border-subtle);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.nx-title {
+    font-size: 18px;
+    color: var(--nx-text-main);
+}
+
+/* Input Area */
+.nx-compose-box {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.nx-compose-inner {
+    flex: 1;
+    background: var(--nx-bg-elevated);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.nx-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--nx-text-main);
+    padding: 12px;
+    font-family: inherit;
+    min-height: 45px;
+}
+
+.nx-btn-primary {
+    background: var(--nx-accent);
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Comentários */
+.nx-comment {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.nx-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nx-comment-meta {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.nx-author {
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.nx-timestamp {
+    color: var(--nx-text-muted);
+    font-size: 12px;
+}
+
+.nx-comment-text {
+    color: #A1A1AA;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* Votos e Ações */
+.nx-comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nx-votes {
+    display: flex;
+    align-items: center;
+    background: var(--nx-bg-elevated);
+    border-radius: 20px;
+    padding: 4px 8px;
+    gap: 8px;
+}
+
+.nx-vote-btn {
+    background: transparent;
+    border: none;
+    color: var(--nx-text-muted);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.nx-vote-btn:hover { color: var(--nx-accent); }
+
+.nx-action-btn {
+    background: transparent;
+    border: none;
+    color: var(--nx-text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+}
